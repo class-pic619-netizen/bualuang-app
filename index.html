@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- ไฟล์นี้สร้างอัตโนมัติจาก index.html + app.css + core.js + app.js ด้วย scripts/build.js (เวอร์ชัน 0.1.0) อย่าแก้ตรงนี้ แก้ที่ต้นทางแล้วรัน npm run build -->
+<!-- ไฟล์นี้สร้างอัตโนมัติจาก index.html + app.css + core.js + app.js ด้วย scripts/build.js (เวอร์ชัน 0.1.1) อย่าแก้ตรงนี้ แก้ที่ต้นทางแล้วรัน npm run build -->
 <html lang="th">
 <head>
 <meta charset="utf-8">
@@ -489,7 +489,7 @@ button.btn.st-purple { background: #EAE3FA; color: #4B35A0; border-color: #C9BBF
   'use strict';
 
   // เลขเวอร์ชันของแอป (ต้องตรงกับ package.json, APP_VERSION ใน app.js และคู่มือ มีเทสต์ตรวจ)
-  const VERSION = '0.1.0';
+  const VERSION = '0.1.1';
   const SCHEMA = 1;
   const DAY_MS = 86400000;
   const THAI_DOW = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
@@ -1379,7 +1379,7 @@ button.btn.st-purple { background: #EAE3FA; color: #4B35A0; border-color: #C9BBF
 (function () {
   'use strict';
   const S = window.SOD;
-  const APP_VERSION = '0.1.0'; // ต้องตรงกับ SOD.VERSION ใน core.js (ถ้าไม่ตรง แปลว่าอัปโหลดไฟล์ไม่ครบ)
+  const APP_VERSION = '0.1.1'; // ต้องตรงกับ SOD.VERSION ใน core.js (ถ้าไม่ตรง แปลว่าอัปโหลดไฟล์ไม่ครบ)
   const KEY_SAVED = 'sod-bl-saved', KEY_DRAFT = 'sod-bl-draft'; // ชื่อคีย์ใน localStorage ของแอปนี้ (แยกจากแอปหอเดิม)
 
   // ---------- สถานะ: แก้ไขได้ทันที แต่ต้องกด "บันทึก" จึงเป็นฉบับที่บันทึก ----------
@@ -1547,7 +1547,7 @@ button.btn.st-purple { background: #EAE3FA; color: #4B35A0; border-color: #C9BBF
     const who = !S.isDutyNight(state, d) ? '<span class="hero-none">ไม่มีเวร</span>'
       : ns.length ? ns.map((n) => '<span class="hero-name"><i class="dot" style="background:' + color(n) + '"></i>ครู' + esc(n) + '</span>').join('')
       : '<span class="hero-none">ยังไม่จัด</span>';
-    return '<div class="hero-top"><span class="logo" aria-hidden="true">🌙</span><div class="hello"><h1>สวัสดี หัวหน้าหอ</h1><p>v' + APP_VERSION + ' · ตารางเวรหอนอน ' + esc(state.dormName) + '</p></div>' +
+    return '<div class="hero-top"><span class="logo" aria-hidden="true">🪷</span><div class="hello"><h1>สวัสดี หัวหน้าหอ</h1><p>v' + APP_VERSION + ' · ตารางเวรหอนอน ' + esc(state.dormName) + '</p></div>' +
       '<button class="bell guide-btn" data-action="guide" aria-label="คู่มือการใช้งาน">📖</button><button class="bell" data-action="goto" data-target="issues" aria-label="รายการที่ต้องดู ' + alerts + ' รายการ">' + icon('bell') + (alerts ? '<span class="bell-n">' + (alerts > 99 ? '99+' : alerts) + '</span>' : '') + '</button></div>' +
       '<div class="hero-k">จัดเวรแล้ว · ' + ymLabel(view.ym) + '</div>' +
       '<div class="hero-big">' + (st.nights ? '<b>' + done + '</b><span class="u">/' + st.nights + ' คืน</span>' : '<span class="u">เดือนนี้ไม่มีเวร</span>') + pill + '</div>' +
@@ -1582,7 +1582,7 @@ button.btn.st-purple { background: #EAE3FA; color: #4B35A0; border-color: #C9BBF
     if (riskN) slides.push(['warn', 'ช่วงเสี่ยง ' + riskN + ' คืน', 'ครูไม่ว่างจนชุดเหลือน้อย ควรดูก่อนสร้างตาราง', btn('ดูช่วงเสี่ยง', 'data-action="goto" data-target="risk"')]);
     if (unbacked()) slides.push(['ok', 'ยังไม่ได้สำรองข้อมูล', meta.lastBackupAt ? 'สำรองล่าสุด ' + dt(meta.lastBackupAt) : 'ยังไม่เคยสำรอง เก็บไฟล์ไว้ใน iCloud Drive', btn('สำรองตอนนี้', 'data-action="export-json"')]);
     return '<div class="feat noprint"><div class="feat-track">' + slides.map(([kind, title, sub, b], i) =>
-      '<div class="feat-card feat-' + kind + '"><div class="feat-txt"><span class="feat-brand">🌙 ' + esc(state.dormName) + '</span><strong>' + title + '</strong><span class="feat-sub">' + sub + '</span>' + b + '</div>' + featArt(kind, i) + '</div>').join('') + '</div>' +
+      '<div class="feat-card feat-' + kind + '"><div class="feat-txt"><span class="feat-brand">🪷 ' + esc(state.dormName) + '</span><strong>' + title + '</strong><span class="feat-sub">' + sub + '</span>' + b + '</div>' + featArt(kind, i) + '</div>').join('') + '</div>' +
       (slides.length > 1 ? '<div class="dots">' + slides.map((x, i) => '<button class="dot-btn" data-action="feat-dot" data-i="' + i + '" aria-label="การ์ดที่ ' + (i + 1) + '"' + (i ? '' : ' aria-current="true"') + '></button>').join('') + '</div>' : '') + '</div>';
   }
   // แถวการ์ดเลื่อนแนวนอน (ที่แก้ไขหลัก): ปกติ = เมื่อคืน · คืนนี้ · ล่วงหน้า 5 คืน · แตะวันในตารางเดือน/เลือกวันที่/กด ◀ ▶ = ย้ายหน้าต่าง 7 คืนไปเริ่มที่วันนั้นลบ 1 (view.focus)
